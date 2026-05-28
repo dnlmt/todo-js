@@ -46,7 +46,7 @@
         background-color: var(--color-dark2);
         border-color: var(--color-dark2);
 
-        & + .todo-item__label {
+        & + .todo__item-label {
             color: var(--color-grey4);
             text-decoration: line-through;
         }

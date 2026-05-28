@@ -3,8 +3,8 @@
     flex-direction: column;
     row-gap: 24px;
     width: 100%;
-    max-width: 404px;
-    min-width: 429px;
+    min-width: 404px;
+    max-width: 429px;
     padding: 24px;
     background-color: var(--color-white);
     border: var(--border);
@@ -22,7 +22,7 @@
 
 .todo__form {
     display: flex;
-    collumn-gap: 16px;
+    column-gap: 16px;
 }
 
 .todo__field {
