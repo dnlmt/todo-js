@@ -6,7 +6,7 @@ class Todo {
         searchTaskForm: '[data-js-todo-search-task-form]',
         searchTaskInput: '[data-js-todo-search-task-input]',
         totalTasks: '[data-js-todo-total-tasks]',
-        deleteAllButton: '[data-js-todo-delet-all-button]',
+        deleteAllButton: '[data-js-todo-delete-all-button]',
         list: '[data-js-todo-list]',
         item: '[data-js-todo-item]',
         itemCheckbox: '[data-js-todo-item-checkbox]',
@@ -74,15 +74,34 @@ class Todo {
 
         const items = this.state.filteredItems ?? this.state.items;
 
-        this.listElement.innerHTML = items.map(({ id, title, isChecked}) => `<li class="todo__item todo-item" data-js-todo-item>
-            <input class="todo__item-checkbox" id="${id}" type="checkbox" ${isChecked ? 'checked' : ''} data-js-todo-item-checkbox>
-            <label for="${id}" class="todo__item-label">${title}</label>
-            <button class="todo__item-delete-button" type="button" aria-label="Delete" title="Delete" data-js-todo-delete-button>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 5L5 15M5 5L15 15" stroke="#757575" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-        </li>`).join('');
+        this.listElement.innerHTML = items.map(({ id, title, isChecked }) => `
+      <li class="todo__item todo-item" data-js-todo-item>
+        <input
+          class="todo-item__checkbox"
+          id="${id}"
+          type="checkbox"
+          ${isChecked ? 'checked' : ''}
+          data-js-todo-item-checkbox
+        />
+        <label
+          class="todo-item__label"
+          for="${id}"
+          data-js-todo-item-label
+        >
+          ${title}
+        </label>
+        <button
+          class="todo-item__delete-button"
+          data-js-todo-item-delete-button
+          aria-label="Delete"
+          title="Delete"
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 5L5 15M5 5L15 15" stroke="#757575" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </li>
+    `).join('');
 
         const isEmptyFilteredItems = this.state.filteredItems?.length === 0;
         const isEmptyItems = this.state.items.length === 0;
